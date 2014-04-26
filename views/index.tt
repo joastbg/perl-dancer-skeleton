@@ -1,0 +1,38 @@
+<h1>Welcome</h1>
+Welcome to my page, [% name %]!
+
+[% foo   = 'Foo'
+   items = [ 'one', 'two', 'three' ]
+%]
+
+<h2>Values</h2>
+<ul>
+[% FOREACH i IN items %]
+   <li> [% i %]
+[% END %]
+</ul>
+
+[% userlist = [
+    { id => 'Tom',   name => 'Thomas'  },
+    { id => 'Dick',  name => 'Richard'  },
+    { id => 'Larry', name => 'Lawrence' },
+   ]
+%]
+
+<h2>Users</h2>
+Just a hash.
+<ul>
+[% FOREACH user IN userlist %]
+   <li><a href="#">[% user.id %] [% user.name %]</a>
+[% END %]
+</ul>
+
+<h2>Fruits</h2>
+Loading data from MySQL database.
+<ul>
+[% use Dumper %]
+[% Dumper.dump(fruits) %]
+[% FOREACH f IN fruits %]
+   <li> [% f.name %] [% f.appearance %] [% f.cost %]
+[% END %]
+</ul>
